@@ -27,6 +27,5 @@ namespace shelovechestvo {
 int main() {
 	shelovechestvo::Chel eva{ 20,"eva"};
 	eva.napr = shelovechestvo::napravlenie::sever;
-	shelovechestvo::napravlenie::sever
 
 }
