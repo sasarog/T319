@@ -45,6 +45,7 @@ namespace CLRBegin {
 	private: System::Windows::Forms::Label^ lblXtoTable;
 	private: System::Windows::Forms::TextBox^ txtbxXToTable;
 	private: System::Windows::Forms::Button^ btnTable;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 
 
 	protected:
@@ -65,6 +66,9 @@ namespace CLRBegin {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CLRBeginMain::typeid));
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->btnMsgBox = (gcnew System::Windows::Forms::Button());
 			this->lblX = (gcnew System::Windows::Forms::Label());
 			this->lblY = (gcnew System::Windows::Forms::Label());
@@ -76,7 +80,9 @@ namespace CLRBegin {
 			this->lblXtoTable = (gcnew System::Windows::Forms::Label());
 			this->txtbxXToTable = (gcnew System::Windows::Forms::TextBox());
 			this->btnTable = (gcnew System::Windows::Forms::Button());
+			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTable))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btnMsgBox
@@ -182,11 +188,28 @@ namespace CLRBegin {
 			this->btnTable->UseVisualStyleBackColor = true;
 			this->btnTable->Click += gcnew System::EventHandler(this, &CLRBeginMain::btnTable_Click);
 			// 
+			// chart1
+			// 
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(1060, 434);
+			this->chart1->Name = L"chart1";
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Series1";
+			this->chart1->Series->Add(series1);
+			this->chart1->Size = System::Drawing::Size(515, 300);
+			this->chart1->TabIndex = 11;
+			this->chart1->Text = L"chart1";
+			// 
 			// CLRBeginMain
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1924, 1024);
+			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->btnTable);
 			this->Controls->Add(this->txtbxXToTable);
 			this->Controls->Add(this->lblXtoTable);
@@ -201,6 +224,7 @@ namespace CLRBegin {
 			this->Name = L"CLRBeginMain";
 			this->Text = L"CLRBeginMain";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvTable))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -274,13 +298,20 @@ namespace CLRBegin {
 		DataTable^ dt = gcnew DataTable();
 		dt->Columns->Add("X", double::typeid);
 		dt->Columns->Add("X^2", double::typeid);
-		dt->Columns->Add("X^3", bool::typeid);
 		try {
+			Random rd;
 			x = Convert::ToDouble(txtbxXToTable->Text);
 			for (int i = 1; i <= x; i++) {
 				dt->Rows->Add(i, Math::Pow(i, 2));
 			}
 			dgvTable->DataSource = dt;
+			chart1->Series[0]->XValueMember = "X";
+			chart1->Series[0]->YValueMembers = "X^2";
+			chart1->Series[0]->ChartType = 
+				System::Windows::Forms::DataVisualization::Charting
+				::SeriesChartType(rd.Next(0,34));
+			chart1->DataSource = dt;
+			chart1->DataBind();
 
 		}
 		catch (System::FormatException^ ex) {
