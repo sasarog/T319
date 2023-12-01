@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 namespace CLRBegin {
 
@@ -10,7 +10,7 @@ namespace CLRBegin {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для CLRBeginMain
+	/// РЎРІРѕРґРєР° РґР»СЏ CLRBeginMain
 	/// </summary>
 	public ref class CLRBeginMain : public System::Windows::Forms::Form
 	{
@@ -19,13 +19,13 @@ namespace CLRBegin {
 		{
 			InitializeComponent();
 			//
-			//TODO: добавьте код конструктора
+			//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 			//
 		}
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~CLRBeginMain()
 		{
@@ -41,14 +41,14 @@ namespace CLRBegin {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -85,8 +85,8 @@ namespace CLRBegin {
 	private: System::Void btnMsgBox_Click(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::DialogResult dr;
 		dr = MessageBox::Show(
-			"Вы верите в бога?",
-			"Заголовок",
+			"Р’С‹ РІРµСЂРёС‚Рµ РІ Р±РѕРіР°?",
+			"Р—Р°РіРѕР»РѕРІРѕРє",
 			System::Windows::Forms::MessageBoxButtons::OKCancel,
 			System::Windows::Forms::MessageBoxIcon::Stop
 		);
@@ -96,7 +96,7 @@ namespace CLRBegin {
 			break;
 		case System::Windows::Forms::DialogResult::OK:
 			MessageBox::Show(
-				"Бесхребетный"
+				"Р‘РµСЃС…СЂРµР±РµС‚РЅС‹Р№"
 			);
 
 			break;
@@ -110,12 +110,12 @@ namespace CLRBegin {
 			break;
 		case System::Windows::Forms::DialogResult::Yes:
 			MessageBox::Show(
-				"Идите в церковь."
+				"РРґРёС‚Рµ РІ С†РµСЂРєРѕРІСЊ."
 			);
 			break;
 		case System::Windows::Forms::DialogResult::No:
 			MessageBox::Show(
-				"Молодец."
+				"РњРѕР»РѕРґРµС†."
 			);
 			break;
 		default:
