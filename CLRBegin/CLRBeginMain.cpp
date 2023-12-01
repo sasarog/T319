@@ -2,7 +2,7 @@
 #include <Windows.h>
 
 using namespace 	 CLRBegin;
-
+[STAThreadAttribute]
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);

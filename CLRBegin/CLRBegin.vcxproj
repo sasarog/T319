@@ -121,15 +121,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CLRBeginMain.cpp" />
+    <ClCompile Include="Painting.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLRBeginMain.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Painting.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CLRBeginMain.resx">
       <DependentUpon>CLRBeginMain.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Painting.resx">
+      <DependentUpon>Painting.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
