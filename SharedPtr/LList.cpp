@@ -2,6 +2,14 @@
 
 
 
+void LList::grab()
+{
+	if (this->next != nullptr) {
+		this->data = this->next->data;
+		this->next->grab();
+	}
+}
+
 LList::LList()
 {
 	this->data = nullptr;
@@ -63,6 +71,28 @@ void LList::deleteByIndex(int index)
 		this->next = this->next->next;
 	}
 
+}
+void LList::deleteByName(const string& name)
+{
+	//Если данные в списке есть
+	if (this->data != nullptr) {
+		//Если имя у данных совпадает
+		if (this->data->name == name) {
+			//Грабим список после текущего элемента
+			this->grab();
+			//Удаляем хвостовой
+			this->next->deleteTailElem();
+		}
+		//Если имя не совпало
+		else {
+			//И есть следующий элемент
+			if (this->next != nullptr) {
+				//Просим его удалить по имени
+				this->next->deleteByName(name);
+			}
+		}
+	}
+	
 }
 shared_ptr<LLData> LList::findData(const string& s) {
 	//Если данные есть

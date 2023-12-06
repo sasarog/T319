@@ -33,6 +33,7 @@ void HasTable::add(const string& name, int age)
 
 void HasTable::remove(const string& name, int age)
 {
+    mas[this->hashFuction(name)].deleteByName(name);
 }
 
 void HasTable::print()
