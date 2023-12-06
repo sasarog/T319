@@ -12,16 +12,16 @@ struct LLData {
 	string name;
 	void printData() {
 		cout <<
-			"\nName: " << this->name
-			<< "\nAge: " << this->age
+			"Name: " << this->name
+			<< " Age: " << this->age
 			<< endl;
 	}
 };
-class LList
+class LList 
 {
-	
 	shared_ptr<LLData> data = nullptr;
 	shared_ptr<LList> next = nullptr;
+	void grab();
 public:
 	LList();
 	LList(string name, int age);
@@ -29,6 +29,8 @@ public:
 	void print();
 	void deleteTailElem();
 	void deleteByIndex(int index);
+	void deleteByName(const string&name);
+	shared_ptr<LLData> findData(const string& s);
 
 };
 
