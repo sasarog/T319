@@ -26,6 +26,9 @@ void LList::add(const string& name, int age)
 
 void LList::print()
 {
+	if (this->data == nullptr) {
+		return;
+	}
 	this->data->printData();
 	if (this->next != nullptr) {
 		this->next->print();

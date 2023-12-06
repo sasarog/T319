@@ -33,4 +33,8 @@ void HasTable::add(const string& name, int age)
 
 void HasTable::print()
 {
+    for (int i = 0; i < this->size; i++) {
+        cout << i << ": \n";
+        mas[i].print();
+    }
 }
