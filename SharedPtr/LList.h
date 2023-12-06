@@ -12,8 +12,8 @@ struct LLData {
 	string name;
 	void printData() {
 		cout <<
-			"\nName: " << this->name
-			<< "\nAge: " << this->age
+			"Name: " << this->name
+			<< " Age: " << this->age
 			<< endl;
 	}
 };

@@ -31,6 +31,10 @@ void HasTable::add(const string& name, int age)
     ].add(name, age);
 }
 
+void HasTable::remove(const string& name, int age)
+{
+}
+
 void HasTable::print()
 {
     for (int i = 0; i < this->size; i++) {

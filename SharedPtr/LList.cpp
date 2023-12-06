@@ -1,7 +1,11 @@
 #include "LList.h"
 
+
+
 LList::LList()
 {
+	this->data = nullptr;
+	this->next = nullptr;
 }
 
 LList::LList(string name, int age)

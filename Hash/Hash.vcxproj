@@ -128,9 +128,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\SharedPtr\LList.h" />
     <ClInclude Include="HasTable.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\SharedPtr\LList.cpp" />
     <ClCompile Include="HashMain.cpp" />
     <ClCompile Include="HasTable.cpp" />
   </ItemGroup>
