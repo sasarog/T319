@@ -29,6 +29,7 @@ public:
 	void print();
 	void deleteTailElem();
 	void deleteByIndex(int index);
+	shared_ptr<LLData> findData(const string& s);
 
 };
 

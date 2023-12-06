@@ -12,6 +12,10 @@ LList::LList(string name, int age)
 
 void LList::add(const string& name, int age)
 {
+	if (this->data == nullptr) {
+		this->data = make_shared<LLData>(name, age);
+		return;
+	}
 	if (this->next == nullptr) {
 		this->next = make_shared<LList>(name, age);
 	}
@@ -52,4 +56,27 @@ void LList::deleteByIndex(int index)
 		this->next = this->next->next;
 	}
 
+}
+shared_ptr<LLData> LList::findData(const string& s) {
+	//Если данные есть
+	if (this->data != nullptr) {
+		//Проверяем, те ли они, что мы искали
+		if (this->data->name == s) {
+			//Если имя совпадает, возвращается указатель на данные
+			return this->data;
+		}
+		//Если имя не совпадает
+		else {
+			//Если есть следующий элемент в списке
+			if (this->next != nullptr) {
+				//Просим у следующего в списке найти данные
+				return this->next->findData(s);
+			}
+		}
+	}
+	//Если никаких данных не нашлось
+	//Возвращаем ничего
+	else {
+		return nullptr;
+	}
 }
