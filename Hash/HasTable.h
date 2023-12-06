@@ -11,7 +11,7 @@ public:
 	HasTable();
 	HasTable(int size);
 	void add(const string& name, int age);
-	void remove(const string& name, int age);
+	void remove(const string& name);
 	void print();
 	shared_ptr< LLData> find(const string& name);
 

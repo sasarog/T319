@@ -31,9 +31,11 @@ void HasTable::add(const string& name, int age)
     ].add(name, age);
 }
 
-void HasTable::remove(const string& name, int age)
+void HasTable::remove(const string& name)
 {
     mas[this->hashFuction(name)].deleteByName(name);
+    mas[this->hashFuction(name)].deleteTailElem();
+
 }
 
 void HasTable::print()

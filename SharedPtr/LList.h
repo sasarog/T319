@@ -17,9 +17,8 @@ struct LLData {
 			<< endl;
 	}
 };
-class LList
+class LList 
 {
-	
 	shared_ptr<LLData> data = nullptr;
 	shared_ptr<LList> next = nullptr;
 	void grab();

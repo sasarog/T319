@@ -14,6 +14,7 @@ LList::LList()
 {
 	this->data = nullptr;
 	this->next = nullptr;
+
 }
 
 LList::LList(string name, int age)
@@ -49,6 +50,7 @@ void LList::print()
 
 void LList::deleteTailElem()
 {
+	
 	if (this->next != nullptr) {
 		if (this->next->next == nullptr) {
 			this->next = nullptr;
@@ -80,8 +82,7 @@ void LList::deleteByName(const string& name)
 		if (this->data->name == name) {
 			//Грабим список после текущего элемента
 			this->grab();
-			//Удаляем хвостовой
-			this->next->deleteTailElem();
+			
 		}
 		//Если имя не совпало
 		else {
