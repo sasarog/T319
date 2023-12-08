@@ -286,16 +286,26 @@ namespace CLRBegin {
 
 		}
 #pragma endregion
+
 	private: System::Void btnMsgBox_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Переменная для резкльтата диалога с пользователем
 		System::Windows::Forms::DialogResult dr;
+		//Сам диалог
 		dr = MessageBox::Show(
+			//Текст в диалоге
 			"Вы верите в бога?",
+			//Текст заголовка
 			"Заголовок",
+			//Какой набор кнопок будет в диалоге
 			System::Windows::Forms::MessageBoxButtons::OKCancel,
+			//Какая иконка будет в диалоге
 			System::Windows::Forms::MessageBoxIcon::Stop
 		);
+		//Использование результата диалога в свиче.
+		//Результат является enum то есть каждое слово является числом
 		switch (dr)
 		{
+			//Разные кейсы для разных результатов диалогов
 		case System::Windows::Forms::DialogResult::None:
 			break;
 		case System::Windows::Forms::DialogResult::OK:
@@ -326,8 +336,14 @@ namespace CLRBegin {
 			break;
 		}
 	}
+	/// <summary>
+	/// вывод сообщения об ошибке
+	/// </summary>
+	/// <param name="eva">Указатель на сам объект исключения</param>
+	/// <returns></returns>
 	private: System::Void error(System::Exception^ eva) {
 		MessageBox::Show(
+			//e->message - текст, описывающий ошибку
 			eva->Message,
 			"Ошибка",
 			System::Windows::Forms::MessageBoxButtons::OK,
@@ -337,36 +353,64 @@ namespace CLRBegin {
 		);
 	}
 	private: System::Void btnSolution_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		//Пробуем выполнять этот код
 		try {
+			//Чтение данных из текстбокса Х,
+			//Преобразование того, что прочитается в double
+			//Присвоение полученного числа в переменную Х
 			double x = Convert::ToDouble(txbxX->Text);
+			//То же самое для у
 			double y = Convert::ToDouble(txbxY->Text);
+			//Высчитывание значения с использованием возведения в степень
 			double result = Math::Pow(x, 2) + Math::Sqrt(y);
+			//Вывод результата в label
+			//Посколько поле имеет ти данных String, 
+			//переменную тип double нужно преобразовать в String
 			lblResult->Text = result.ToString();
 		}
+		//Если будет исключение, программа не вылетит, а выполнится код
+		//который в фигурных скобках catch
 		catch (System::FormatException^ eva) {
+			//Отправляем обработчик в функцию для печати
+			//Это наша собственно нами написанная функция
 			this->error(eva);
 		}
 
 	}
 	private: System::Void btnTable_Click(System::Object^ sender, System::EventArgs^ e) {
 		double x;
+		//Аналог массива
 		DataTable^ dt = gcnew DataTable();
+		//Добавляем два double столбца в таблицу
+		//Сама таблица чисто в оперативке
 		dt->Columns->Add("X", double::typeid);
 		dt->Columns->Add("X^2", double::typeid);
 		try {
+			//Для случайных чисел
 			Random rd;
+			//Берём значение из текстбокса
 			x = Convert::ToDouble(txtbxXToTable->Text);
+			//Заполняем таблицу строками со значением
 			for (int i = 1; i <= x; i++) {
 				dt->Rows->Add(i, Math::Pow(i, 2));
 			}
+			//В качестве источника данных для таблицы, на которую всё выводится
+			//сделаем нашу таблицу, которая в оперативке
 			dgvTable->DataSource = dt;
+			//Тут код для чартов
+			//Какой столбец таблицы будет в графике
+			// под нулевым номером считаться за горизонтальные значения
 			chart1->Series[0]->XValueMember = "X";
+			//Что будет считаться за вертикалные значения
 			chart1->Series[0]->YValueMembers = "X^2";
+			//Тип графика
 			chart1->Series[0]->ChartType = 
 				System::Windows::Forms::DataVisualization::Charting
+				//Выбирается рандомно
 				::SeriesChartType(rd.Next(0,34));
+			//В качестве источника данных указывается таблица наша в оперативке
 			chart1->DataSource = dt;
+			//Связывание чарта с таблицей
 			chart1->DataBind();
 
 		}
@@ -375,9 +419,13 @@ namespace CLRBegin {
 		}
 	}
 	private: System::Void btnNewWindow_Click(System::Object^ sender, System::EventArgs^ e) {
+		//Для открытия нового окна создаём объект этого окна
 		CLRBegin::Painting^ painting = gcnew Painting();
+		//Текущее окно скрываем от отображения
 		this->Hide();
+		//Открытие второго окна
 		painting->ShowDialog();
+		//После того, как окно отработало, обратно показываем наше
 		this->Show();
 	}
 };
