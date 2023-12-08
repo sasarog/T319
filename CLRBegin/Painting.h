@@ -104,55 +104,70 @@ namespace CLRBegin {
 
 		}
 #pragma endregion
+
+		//Объект, на котором будем рисовать
 		Graphics^ gr;
 
 	private: System::Void btnPaint_Click(System::Object^ sender, System::EventArgs^ e) {
 
+		//Ручка, которой будет производиться рисование
+		//Цвет красный, толщина 3
 		Pen^ p = gcnew Pen(System::Drawing::Color::Red, 3);
+		//Оччищает окно, заливая при этом чёрным цветом
 		gr->Clear(Color::Black);
+		//Рисует линию при помощи нашей ручки
+		//из точки 0, 0 в точнку 500б 250
 		gr->DrawLine(p, 0, 0, 500, 500);
 	}
+		   //событие загрузки формы
 	private: System::Void Painting_Load(System::Object^ sender, System::EventArgs^ e) {
+		//объект для рисования привязывается к picturebox
 		gr = pictureBox1->CreateGraphics();
 	}
+		   //событие при движении мыши по picturebox
 	private: System::Void pictureBox1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		//Если нажата левая кнопка мыши
 		if (e->Button == System::Windows::Forms::MouseButtons::Left) {
+			//Получаем позицию мыши
 			PointF mousePos = e->Location;
 			Pen^ p = gcnew Pen(System::Drawing::Color::Red, 3);
+			//Делаем оъект с копией позиции мыши
 			PointF mousePos2 = mousePos;
+			//Эту вторую позицию немного смещаем
 			mousePos.X += 1;
+			//Рисуем линию между этими двумя точками
 			gr->DrawLine(p, mousePos, mousePos2);
 		}
 	}
+
 	private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e) {
-		//if (pictureBox1->Image != nullptr) //если в pictureBox есть изображение
-		//{
-			//создание диалогового окна "Сохранить как..", для сохранения изображения
-			SaveFileDialog^ savedialog = gcnew SaveFileDialog();
-			savedialog->Title = "Сохранить картинку как...";
-			//отображать ли предупреждение, если пользователь указывает имя уже существующего файла
-			savedialog->OverwritePrompt = true;
-			//отображать ли предупреждение, если пользователь указывает несуществующий путь
-			savedialog->CheckPathExists = true;
-			//список форматов файла, отображаемый в поле "Тип файла"
-			savedialog->Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
-			//отображается ли кнопка "Справка" в диалоговом окне
-			savedialog->ShowHelp = true;
-			if (savedialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) //если в диалоговом окне нажата кнопка "ОК"
+
+		//создание диалогового окна "Сохранить как..", для сохранения изображения
+		SaveFileDialog^ savedialog = gcnew SaveFileDialog();
+		savedialog->Title = "Сохранить картинку как...";
+		//отображать ли предупреждение, если пользователь указывает имя уже существующего файла
+		savedialog->OverwritePrompt = true;
+		//отображать ли предупреждение, если пользователь указывает несуществующий путь
+		savedialog->CheckPathExists = true;
+		//список форматов файла, отображаемый в поле "Тип файла"
+		savedialog->Filter = "Image Files(*.BMP)|*.BMP|Image Files(*.JPG)|*.JPG|Image Files(*.GIF)|*.GIF|Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+		//отображается ли кнопка "Справка" в диалоговом окне
+		savedialog->ShowHelp = true;
+		if (savedialog->ShowDialog() == System::Windows::Forms::DialogResult::OK) //если в диалоговом окне нажата кнопка "ОК"
+		{
+			try
 			{
-				try
-				{
-					Bitmap^ Bmp = gcnew Bitmap(pictureBox1->Image);
-					Bmp->Save(savedialog->FileName);
-				}
-				catch(System::NullReferenceException^ ex)
-				{
-					MessageBox::Show("Невозможно сохранить изображение", "Ошибка",
-						MessageBoxButtons::OK, MessageBoxIcon::Error);
-				}
+				Bitmap^ Bmp = gcnew Bitmap(pictureBox1->Image);
+				Bmp->Save(savedialog->FileName);
 			}
-		//}
+			catch (System::NullReferenceException^ ex)
+			{
+				MessageBox::Show("Невозможно сохранить изображение", "Ошибка",
+					MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+
 
 	}
-};
+	};
 }
