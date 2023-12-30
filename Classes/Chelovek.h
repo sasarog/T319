@@ -3,11 +3,15 @@
 using namespace std;
 class Chelovek
 {
-	int _age;
-	string _name;
+	mutable int _age;
+	mutable string _name;
 public:
+	//Конструктор по умолчанию
 	Chelovek();
+	//Конструктор с параметром
 	Chelovek(const string& namee, int agee);
+	//Конструктор копирования
+	Chelovek(const Chelovek& tmp);
 	void SetName(const string& namee);
 	string GetName();
 	void SetAge(int agee);
@@ -17,6 +21,6 @@ public:
 	//методы из этих дочерних классов
 	//Но в том случае, если в функции отправлялись именно
 	//экземпляры этих дочерних классов
-	virtual void print();
+	virtual void print() const;
 };
 

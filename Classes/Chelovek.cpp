@@ -11,6 +11,12 @@ Chelovek::Chelovek(const string& namee, int agee)
 	this->SetAge(agee);
 }
 
+Chelovek::Chelovek(const Chelovek& tmp)
+{
+	this->_name = tmp._name;
+	this->_age = tmp._age;
+}
+
 void Chelovek::SetName(const string& namee)
 {
 	if (namee != "") {
@@ -35,7 +41,7 @@ int Chelovek::GetAge()
 	return this->_age;
 }
 
-void Chelovek::print()
+void Chelovek::print() const
 {
 	cout << "\nName: " << this->_name <<
 		"\nAge: " << this->_age << endl;

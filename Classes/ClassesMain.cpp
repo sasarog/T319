@@ -9,7 +9,8 @@ void f(Student* c) {
 
 
 int main() {
-	Student eva("EVA", 20, 8);
+	const Student eva("EVA", 20, 8);
+	eva.print();
 	Chelovek adam("ADAM", 30);
-	f(&eva);
+	//f(&eva);
 }
