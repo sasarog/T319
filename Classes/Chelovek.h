@@ -12,5 +12,6 @@ public:
 	string GetName();
 	void SetAge(int agee);
 	int GetAge();
+	void print();
 };
 

@@ -34,3 +34,9 @@ int Chelovek::GetAge()
 {
 	return this->_age;
 }
+
+void Chelovek::print()
+{
+	cout << "\nName: " << this->_name <<
+		"\nAge: " << this->_age << endl;
+}
