@@ -1,4 +1,4 @@
-#include "Chelovek.h"
+﻿#include "Chelovek.h"
 using namespace std;
 Chelovek::Chelovek()
 {
@@ -46,3 +46,5 @@ void Chelovek::print() const
 	cout << "\nName: " << this->_name <<
 		"\nAge: " << this->_age << endl;
 }
+
+
