@@ -35,6 +35,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLRClass", "CLRClass\CLRCla
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CLRQueueProject", "CLRQueueProject\CLRQueueProject.vcxproj", "{DF90A66C-15A0-4A63-8DA9-C77C3F1AF85F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PaintingProject", "PaintingProject\PaintingProject.vcxproj", "{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -171,6 +173,14 @@ Global
 		{DF90A66C-15A0-4A63-8DA9-C77C3F1AF85F}.Release|x64.Build.0 = Release|x64
 		{DF90A66C-15A0-4A63-8DA9-C77C3F1AF85F}.Release|x86.ActiveCfg = Release|Win32
 		{DF90A66C-15A0-4A63-8DA9-C77C3F1AF85F}.Release|x86.Build.0 = Release|Win32
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Debug|x64.ActiveCfg = Debug|x64
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Debug|x64.Build.0 = Debug|x64
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Debug|x86.ActiveCfg = Debug|Win32
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Debug|x86.Build.0 = Debug|Win32
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Release|x64.ActiveCfg = Release|x64
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Release|x64.Build.0 = Release|x64
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Release|x86.ActiveCfg = Release|Win32
+		{FA31E30E-853C-409B-A4CB-EEF6554A1BC5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
